@@ -12,6 +12,11 @@ image_filename = "captured_image.jpg"
 model = YOLO('models/yolov8m-seg.pt')
 pipe = pipeline(task="depth-estimation", model="depth-anything/Depth-Anything-V2-Small-hf")
 
+def speak(text, lang='en', output_file='speech.mp3'):
+    tts = gTTS(text=text, lang=lang)
+    tts.save(output_file)
+    os.system("mpg321 " + output_file)
+
 def convert_opencv_to_pil(opencv_image):
     rgb_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB)
     pil_image = Image.fromarray(rgb_image)
@@ -36,7 +41,7 @@ def check_location(x_min, y_min, x_max, y_max, frame_width, frame_height):
 
 def scan_mode():
     try:
-        cap = cv2.VideoCapture(1)
+        cap = cv2.VideoCapture(0)
         ret, frame = cap.read()
         cv2.imwrite(image_filename, frame)
         frame = cv2.imread(image_filename)

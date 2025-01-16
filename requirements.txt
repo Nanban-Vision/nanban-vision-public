@@ -1,0 +1,10 @@
+ultralytics
+gtts
+opencv-python
+SpeechRecognition
+gpiozero
+pulsectl
+beautifulsoup4
+huggingface-hub
+langchain_community
+transformers 
