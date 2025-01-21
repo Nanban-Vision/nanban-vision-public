@@ -11,8 +11,7 @@ from youtube_search import YoutubeSearch
 from pydub import AudioSegment
 from pydub.playback import play
 import speech_recognition as sr
-import keyboard
-from gtts import gtts
+from gtts import gTTS
 import os
 from huggingface_hub import login
 from langchain.llms import HuggingFaceHub
@@ -24,7 +23,6 @@ HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 SPOTIFY_CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 
-login(HUGGINFACEHUB_API_TOKEN)
 gemma7b = HuggingFaceHub(repo_id='google/gemma-1.1-7b-it')
 
 client_credentials_manager = SpotifyClientCredentials(client_id=SPOTIFY_CLIENT_ID, client_secret=SPOTIFY_CLIENT_SECRET)

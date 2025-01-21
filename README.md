@@ -9,10 +9,7 @@ Nanban was developed as an assistive device for the visually impaired, combining
 ### Object Detection Mode
 - Camera-based object detection using YOLOv8
 - Distance measurement using geometric calculations
-- Real-time object recognition and distance approximation using:
-  - Predetermined average object widths
-  - Object pixel width from YOLOv8
-  - Trigonometric calculations for distance estimation
+- Real-time object recognition and distance estimation using DepthAnything AI model.
 
 ### Voice Assistant Mode
 - Real-time information services:

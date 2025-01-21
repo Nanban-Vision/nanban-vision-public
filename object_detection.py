@@ -73,6 +73,3 @@ def scan_mode():
     finally:
         cap.release()
         cv2.destroyAllWindows()
-
-while True:
-    scan_mode()
