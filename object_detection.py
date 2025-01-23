@@ -66,6 +66,7 @@ def scan_mode():
                 mean_depth = np.median(depth_array)
                 message = f"There is a {name}, around {mean_depth:.2f} centimeters away and it is in your {position}."
                 speak(message)
+                break
     except Exception as e:
         print(f"Error: {e}")
         import traceback
