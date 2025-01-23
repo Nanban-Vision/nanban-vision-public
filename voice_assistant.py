@@ -1,6 +1,4 @@
 import subprocess
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
 import requests
 from bs4 import BeautifulSoup
 import datetime
@@ -20,13 +18,8 @@ from dotenv import load_dotenv
 load_dotenv()
 IPDATA_API_KEY = os.getenv("IPDATA_API_KEY")
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN") 
-SPOTIFY_CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
-SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 
 gemma7b = HuggingFaceHub(repo_id='google/gemma-1.1-7b-it')
-
-client_credentials_manager = SpotifyClientCredentials(client_id=SPOTIFY_CLIENT_ID, client_secret=SPOTIFY_CLIENT_SECRET)
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 def takecommand():
     r = sr.Recognizer()

@@ -8,7 +8,6 @@ beautifulsoup4
 huggingface-hub
 langchain_community
 transformers 
-spotipy
 pytube
 youtube_search
 pydub
