@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import datetime
 import json
 import io
-from pytube import YouTube
+import yt_dlp
 from youtube_search import YoutubeSearch
 from pydub import AudioSegment
 from pydub.playback import play
@@ -122,16 +122,36 @@ def search_song():
             video_id = results[0]['id']
             url = f"https://www.youtube.com/watch?v={video_id}"
             speak("Downloading song from youtube...")
-            download_audio(url)
+            downloaded_audio = download_audio(url)
+            
+            if downloaded_audio == "download_error":
+                continue
+
             speak("Playing song...")
             play_song()
         else:
             speak("song not found")
 
 def download_audio(url):
-    yt = YouTube(url)
-    audio_stream = yt.streams.filter(only_audio=True).first()
-    audio_stream.download(output_path=".", filename="temp_song")
+    mp3_filename = "temp"
+    
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'outtmpl': mp3_filename,
+    }
+    
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+        return mp3_filename + ".mp3"
+    except Exception as e:
+        speak("Error downloading song")
+        return "download_error"
 
 def play_song():
     song = AudioSegment.from_file("temp_song")
