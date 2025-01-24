@@ -154,7 +154,7 @@ def download_audio(url):
         return "download_error"
 
 def play_song():
-    song = AudioSegment.from_file("temp_song")
+    song = AudioSegment.from_file("temp_song.mp3")
     play(song)
 
 def helpline(input_text):
